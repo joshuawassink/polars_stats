@@ -666,7 +666,7 @@ def _prepare_lift_data(df: pl.LazyFrame,
     
     # Calculate lift statistics for each segment
     lift_results = []
-    for segment in segments:
+    for segment in segments: # type: ignore
         if segment_col is None or segment == "Overall":
             segment_df = df
             segment_label = "Overall"
@@ -863,8 +863,6 @@ def _format_lift_table(combined_df: pl.DataFrame) -> pl.DataFrame:
         pl.col('relative_lift_pct_ci_upper').alias('rel_lift_ci_upper'),
         pl.col('is_significant')
     ])
-
-
 
 
 def _configure_lift_plot_aesthetics(ax, 
